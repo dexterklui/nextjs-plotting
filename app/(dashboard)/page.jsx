@@ -1,4 +1,5 @@
 import Link from "next/link";
+import paths from "../paths";
 
 export default function Home() {
   return (
@@ -14,7 +15,7 @@ export default function Home() {
       </p>
 
       <div className="flex justify-center my-8">
-        <Link href="/tickets">
+        <Link href={paths.tickets}>
           <button className="btn-primary">View Tickets</button>
         </Link>
       </div>

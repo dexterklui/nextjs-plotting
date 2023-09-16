@@ -1,3 +1,4 @@
+import paths from "@/app/paths";
 import Link from "next/link";
 
 export default function NotFound() {
@@ -6,7 +7,7 @@ export default function NotFound() {
       <h2 className="text-3xl">We Hit a Brick Wall.</h2>
       <p>We could not find the ticket you were looking for.</p>
       <p>
-        Go back to all <Link href="/tickets">tickets</Link>.
+        Go back to all <Link href={paths.tickets}>tickets</Link>.
       </p>
     </main>
   );

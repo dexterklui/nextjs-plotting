@@ -1,11 +1,23 @@
 import { notFound } from "next/navigation";
 
+// whether dyanmic params that do not match any generated static params should be accepted
+// if false then 404 page is served
+// default is true
+export const dynamicParams = true;
+
 export async function generateStaticParams() {
   const res = await fetch("http://localhost:4000/tickets");
   const tickets = await res.json();
   return tickets.map((ticket) => ({
     id: ticket.id,
   }));
+}
+
+export async function generateMetadata({ params }) {
+  const ticket = await getTicket(params.id);
+  return {
+    title: `Dojo Helpdesk | ${ticket.title}`,
+  };
 }
 
 async function getTicket(id) {
