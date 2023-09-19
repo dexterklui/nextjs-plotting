@@ -1,5 +1,3 @@
-"use client";
-
 import AxisBottom from "./AxisBottom";
 import AxisLeft from "./AxisLeft";
 import Marks from "./Marks";
@@ -17,16 +15,22 @@ const innerWidth = width - margin.left - margin.right;
 const innerHeight = height - margin.top - margin.bottom;
 
 /**
- * {Array} data
- * {function} xValue - accessor function for x value
- * {function} yValue - accessor function for y value
- * @returns {React.JSX} a <svg> plot
+ * @param {Object} props
+ * @type {Array} props.data
+ * @type {String} props.fieldKeys.location
+ * @type {String} props.fieldKeys.population
+ * @type {String} props.fieldKeys.year
+ * @type {String} props.year - the year to plot
+ * @type {Number} props.count - number of highest pop countries to plot
  */
-export default function PopulationBarSvg({ data, locAcsr, popAcsr }) {
+export default function PopulationBarSvg({ data, fieldKeys, year, count }) {
+  const locAcsr = (d) => d[fieldKeys.location]; // location accessor
+  const popAcsr = (d) => +d[fieldKeys.population]; // population accessor
+
   data = data
-    .filter((d) => d.Time === "2022")
+    .filter((d) => d[fieldKeys.year] === year)
     .sort((a, b) => popAcsr(b) - popAcsr(a))
-    .slice(0, 10);
+    .slice(0, count);
 
   // equally divide range for each item in domain
   const yScale = scaleBand().domain(data.map(locAcsr)).range([0, innerHeight]);
