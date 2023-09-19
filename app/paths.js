@@ -14,6 +14,7 @@ const paths = {
   d3: "/playground/d3",
   d3Smilie: "/playground/d3/smilie",
   d3Data: "/playground/d3/data",
+  d3PopulationBar: "/playground/d3/population-bar",
 
   vega: "/playground/vega",
 };
