@@ -1,11 +1,18 @@
-export default function Marks({ data, popAcsr, locAcsr, xScale, yScale }) {
+import { accessors, tooltip } from "./dataSpec";
+
+const { location, population } = accessors;
+
+export default function Marks({ data, xScale, yScale }) {
   return data.map((d) => (
     <rect
-      key={locAcsr(d)}
+      className="d3-mark"
+      key={location(d)}
       x={0}
-      y={yScale(locAcsr(d))}
-      width={xScale(popAcsr(d))}
+      y={yScale(location(d))}
+      width={xScale(population(d))}
       height={yScale.bandwidth()}
-    />
+    >
+      <title>{tooltip(d)}</title>
+    </rect>
   ));
 }

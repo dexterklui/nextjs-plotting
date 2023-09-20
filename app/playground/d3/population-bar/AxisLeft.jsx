@@ -1,27 +1,16 @@
-function shortenLocationName(name) {
-  let result = "";
-  switch (name) {
-    case "United States of America":
-      result = "USA";
-      break;
-    case "Russian Federation":
-      result = "Russia";
-      break;
-    default:
-      result = name;
-  }
-  return result;
-}
+import { axesFormatters } from "./dataSpec";
+
+const formatter = axesFormatters.location;
 
 export default function AxisLeft({ yScale }) {
   return yScale.domain().map((location) => (
-    <g key={location} transform={`translate(0, ${yScale(location)})`}>
-      <text
-        dx="-.25em"
-        dy={yScale.bandwidth() * 0.5}
-        style={{ textAnchor: "end" }}
-      >
-        {shortenLocationName(location)}
+    <g
+      className="d3-tick"
+      key={location}
+      transform={`translate(0, ${yScale(location) + yScale.bandwidth() * 0.5})`}
+    >
+      <text className="text-anchor-end" dx="-.25em" dy="0.2em">
+        {formatter(location)}
       </text>
     </g>
   ));

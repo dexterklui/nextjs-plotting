@@ -131,6 +131,20 @@ form button {
     rounded-tl-md;
 }
 
+/* svg */
+
+.text-anchor-start {
+  text-anchor: start;
+}
+
+.text-anchor-middle {
+  text-anchor: middle;
+}
+
+.text-anchor-end {
+  text-anchor: end;
+}
+
 /**************************/
 /*        Packages        */
 /**************************/
