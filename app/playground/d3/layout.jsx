@@ -9,6 +9,7 @@ export default function svg({ children }) {
         <Link href={paths.d3Smilie}>Smilie</Link>
         <Link href={paths.d3Data}>CSV Data Info</Link>
         <Link href={paths.d3PopulationBar}>Population Bar</Link>
+        <Link href={paths.d3IrisScatterPlot}>Iris Scatter</Link>
       </Navbar>
       {children}
     </div>
