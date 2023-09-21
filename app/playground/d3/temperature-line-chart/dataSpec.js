@@ -1,4 +1,4 @@
-// The Iris Dataset
+// Temperature over time
 export const csvUrl =
   "https://gist.githubusercontent.com/curran/60b40877ef898f19aeb8/raw/week_temperature_sf.csv";
 

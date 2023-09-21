@@ -1,4 +1,4 @@
-import Navbar from "@/app/components/Navbar";
+import Navbar from "@/app/(components)/Navbar";
 import paths from "@/app/paths";
 import Link from "next/link";
 

@@ -7,16 +7,15 @@ import { accessors } from "./dataSpec";
 
 const { date, temperature } = accessors;
 
-export const keyVal = date;
-export const xVal = date;
-export const yVal = temperature;
-export const xLabel = "Time";
-export const yLabel = "Temperature";
-export const xTickFormatter = timeFormat("%a");
-export const yTickFormatter = (val) => val;
+const keyVal = date;
+const xVal = date;
+const yVal = temperature;
+const xLabel = "Time";
+const yLabel = "Temperature";
+const xTickFormatter = timeFormat("%a");
+const yTickFormatter = (val) => val;
 
-export const tooltip = (d) =>
-  `${xLabel}: ${xVal(d)}\n` + `${yLabel}: ${yVal(d)}`;
+const tooltip = (d) => `${xLabel}: ${xVal(d)}\n` + `${yLabel}: ${yVal(d)}`;
 
 /**************************/
 /*        Geometry        */
@@ -24,32 +23,65 @@ export const tooltip = (d) =>
 
 /* plot dimension */
 // NOTE: this is viewBox width and height
-export const width = 600;
-export const height = 320;
+const width = 600;
+const height = 320;
 
-export const margin = {
+const margin = {
   top: 20,
   right: 20,
   bottom: 40,
   left: 50,
 };
 
-export const innerWidth = width - margin.left - margin.right;
-export const innerHeight = height - margin.top - margin.bottom;
+const innerWidth = width - margin.left - margin.right;
+const innerHeight = height - margin.top - margin.bottom;
 
 /* marks */
-export const lineWidth = 2;
-export const curveFactory = curveNatural;
-export const markRadius = 2;
+const lineWidth = 2;
+const curveFactory = curveNatural;
+const scatterMarksRadius = 2;
 
 /* labels */
-export const xLabelOffset = "35";
-export const yLabelOffset = "35";
+const xLabelOffset = "35";
+const yLabelOffset = "35";
 
 /* ticks */
-export const xTickAnchor = "start"; // ("start" | "middle" | "end")
-export const yTickAnchor = "end"; // ("start" | "middle" | "end")
-export const xTickOffset = "18"; // adjust distance from axis
-export const yTickOffset = "-0.4em"; // adjust distance from axis
-export const xTickShift = "0"; // shift position along axis
-export const yTickShift = "0.4em"; // shift position along axis
+const xTickAnchor = "start"; // ("start" | "middle" | "end")
+const yTickAnchor = "end"; // ("start" | "middle" | "end")
+const xTickOffset = "18"; // adjust distance from axis
+const yTickOffset = "-0.4em"; // adjust distance from axis
+const xTickShift = "0"; // shift position along axis
+const yTickShift = "0.4em"; // shift position along axis
+
+/************************/
+/*        Export        */
+/************************/
+
+const plotSpec = {
+  keyVal,
+  xVal,
+  yVal,
+  xLabel,
+  yLabel,
+  xTickFormatter,
+  yTickFormatter,
+  tooltip,
+  width,
+  height,
+  margin,
+  innerWidth,
+  innerHeight,
+  lineWidth,
+  curveFactory,
+  scatterMarksRadius,
+  xLabelOffset,
+  yLabelOffset,
+  xTickAnchor,
+  yTickAnchor,
+  xTickOffset,
+  yTickOffset,
+  xTickShift,
+  yTickShift,
+};
+
+export default plotSpec;

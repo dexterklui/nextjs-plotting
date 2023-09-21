@@ -1,17 +1,12 @@
-import {
-  innerHeight,
-  xTickAnchor,
-  xTickFormatter,
-  xTickOffset,
-  xTickShift,
-} from "./plotSpec";
+export default function AxisBottom({ scale, plotSpec }) {
+  const { innerHeight, xTickAnchor, xTickFormatter, xTickOffset, xTickShift } =
+    plotSpec;
 
-export default function AxisBottom({ xScale }) {
-  return xScale.ticks().map((tickVal) => (
+  return scale.ticks().map((tickVal) => (
     <g
       className="d3-tick"
       key={tickVal}
-      transform={`translate(${xScale(tickVal)}, 0)`}
+      transform={`translate(${scale(tickVal)}, 0)`}
     >
       <line y2={innerHeight} />
       <text

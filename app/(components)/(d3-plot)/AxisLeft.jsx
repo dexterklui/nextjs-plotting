@@ -1,17 +1,12 @@
-import {
-  innerWidth,
-  yTickAnchor,
-  yTickFormatter,
-  yTickOffset,
-  yTickShift,
-} from "./plotSpec";
+export default function AxisLeft({ scale, plotSpec }) {
+  const { innerWidth, yTickAnchor, yTickFormatter, yTickOffset, yTickShift } =
+    plotSpec;
 
-export default function AxisLeft({ yScale }) {
-  return yScale.ticks().map((tickVal) => (
+  return scale.ticks().map((tickVal) => (
     <g
       className="d3-tick"
       key={tickVal}
-      transform={`translate(0, ${yScale(tickVal)})`}
+      transform={`translate(0, ${scale(tickVal)})`}
     >
       <line x2={innerWidth} />
       <text
