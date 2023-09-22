@@ -11,6 +11,7 @@ export default function svg({ children }) {
         <Link href={paths.d3PopulationBar}>Population Bar</Link>
         <Link href={paths.d3IrisScatterPlot}>Iris Scatter</Link>
         <Link href={paths.d3TemperatureLineChart}>Temp Line</Link>
+        <Link href={paths.d3Map}>Map</Link>
       </Navbar>
       {children}
     </div>
