@@ -1,10 +1,10 @@
 import { extent, scaleLinear, scaleTime } from "d3";
 import { preprocessData } from "./dataSpec";
 import plotSpec from "./plotSpec";
-import AxisBottom from "@/app/(components)/(d3-plot)/AxisBottom";
-import AxisLeft from "@/app/(components)/(d3-plot)/AxisLeft";
-import Line from "@/app/(components)/(d3-plot)/Line";
-import ScatterMarks from "@/app/(components)/(d3-plot)/ScatterMarks";
+import AxisBottom from "@/app/_components/_d3-plot/AxisBottom";
+import AxisLeft from "@/app/_components/_d3-plot/AxisLeft";
+import Line from "@/app/_components/_d3-plot/Line";
+import ScatterMarks from "@/app/_components/_d3-plot/ScatterMarks";
 import "./style.css";
 
 export default function TemperatureLineChart({ data }) {

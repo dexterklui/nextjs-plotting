@@ -1,9 +1,9 @@
-import mongodbQuery from "@/app/(js)/mongodb";
+import mongodbQuery from "@/app/_js/mongodb";
 import dynamic from "next/dynamic";
 
 // dyanmic import and disable server side rendering to prevent
 // hydration error
-const SimpleBarChart = dynamic(() => import("@/app/(js)/SimpleBarChart"), {
+const SimpleBarChart = dynamic(() => import("@/app/_js/SimpleBarChart"), {
   ssr: false,
 });
 

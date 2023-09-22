@@ -1,6 +1,6 @@
 import Link from "next/link";
 import paths from "@/app/paths";
-import Navbar from "@/app/(components)/Navbar";
+import Navbar from "@/app/_components/Navbar";
 
 export default function DashboardLayout({ children }) {
   return (

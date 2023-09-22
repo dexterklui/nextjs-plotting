@@ -3,7 +3,7 @@ import { accessors, plotYear, plotCount } from "./dataSpec";
 import AxisBottom from "./AxisBottom";
 import AxisLeft from "./AxisLeft";
 import Marks from "./Marks";
-import "@/app/(css)/d3.css";
+import "@/app/_css/d3.css";
 
 const { location, population, year } = accessors;
 

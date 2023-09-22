@@ -1,4 +1,4 @@
-import getCsvData from "@/app/(js)/getCsvData";
+import getCsvData from "@/app/_js/getCsvData";
 import IrisScatterPlot from "./IrisScatterPlot";
 import { csvUrl } from "./dataSpec";
 

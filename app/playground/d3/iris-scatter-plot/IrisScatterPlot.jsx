@@ -1,9 +1,9 @@
 import { extent, scaleLinear } from "d3";
 import { preprocessData } from "./dataSpec";
 import plotSpec from "./plotSpec";
-import AxisBottom from "@/app/(components)/(d3-plot)/AxisBottom";
-import AxisLeft from "@/app/(components)/(d3-plot)/AxisLeft";
-import ScatterMarks from "@/app/(components)/(d3-plot)/ScatterMarks";
+import AxisBottom from "@/app/_components/_d3-plot/AxisBottom";
+import AxisLeft from "@/app/_components/_d3-plot/AxisLeft";
+import ScatterMarks from "@/app/_components/_d3-plot/ScatterMarks";
 import "./style.css";
 
 export default function IrisScatterPlot({ data }) {
