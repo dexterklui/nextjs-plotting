@@ -18,7 +18,7 @@ const margin = {
 const innerWidth = width - margin.left - margin.right;
 const innerHeight = height - margin.top - margin.bottom;
 
-export default function PopulationBarSvg({ data }) {
+export default function PopulationPlot({ data }) {
   data = data
     .filter((d) => year(d) === plotYear)
     .sort((a, b) => population(b) - population(a))
