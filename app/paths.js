@@ -6,6 +6,7 @@ const paths = {
 
   login: "/login",
   signup: "/signup",
+  verify: "/verify",
 
   playground: "/playground",
 
