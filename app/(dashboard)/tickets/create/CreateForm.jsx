@@ -36,7 +36,8 @@ export default function CreateForm() {
     if (data) {
       router.refresh();
       router.push(paths.tickets);
-    } else {
+    }
+    if (!error && !data) {
       console.log("Unknown error creating ticket");
     }
 
