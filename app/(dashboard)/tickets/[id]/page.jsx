@@ -1,45 +1,37 @@
+import { cookies } from "next/headers";
 import { notFound } from "next/navigation";
+import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 
 // whether dyanmic params that do not match any generated static params should be accepted
 // if false then 404 page is served
 // default is true
 export const dynamicParams = true;
 
-export async function generateStaticParams() {
-  const res = await fetch("http://localhost:4000/tickets");
-  const tickets = await res.json();
-  return tickets.map((ticket) => ({
-    id: ticket.id,
-  }));
-}
-
 export async function generateMetadata({ params }) {
-  const ticket = await getTicket(params.id);
+  const { data: ticket } = await getTicket(params.id);
+
   return {
-    title: `Dojo Helpdesk | ${ticket.title}`,
+    title: `Dojo Helpdesk | ${ticket?.title || "Ticket not found"}`,
   };
 }
 
 async function getTicket(id) {
-  // imitate delay
-  await new Promise((resolve) => setTimeout(resolve, 3000));
+  const supabase = createServerComponentClient({ cookies });
+  const { data, error } = await supabase
+    .from("Tickets")
+    .select()
+    .eq("id", id)
+    .single();
 
-  const res = await fetch("http://localhost:4000/tickets/" + id, {
-    next: {
-      revalidate: 60,
-    },
-  });
+  if (error) console.error(error.message);
 
-  if (!res.ok) {
-    notFound();
-  }
-
-  return res.json();
+  return { data, error };
 }
 
 export default async function TicketDetails({ params }) {
-  console.log("TicketDetails params ids:", params);
-  const ticket = await getTicket(params.id);
+  const { data: ticket, error } = await getTicket(params.id);
+
+  if (error) notFound();
 
   return (
     <main>
