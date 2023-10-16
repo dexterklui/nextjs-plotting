@@ -3,6 +3,8 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
+import paths from "@/app/paths";
+
 export default function CreateForm() {
   const router = useRouter();
 
@@ -19,19 +21,26 @@ export default function CreateForm() {
       title,
       body,
       priority,
-      user_email: "mario@netninja.dev",
     };
 
-    const res = await fetch("http://localhost:4000/tickets", {
+    const res = await fetch("http://localhost:3000/api/tickets", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(ticket),
     });
 
-    if (res.status === 201) {
-      router.refresh();
-      router.push("/tickets");
+    const { data, error } = await res.json();
+    if (error) {
+      console.log(error.message);
     }
+    if (data) {
+      router.refresh();
+      router.push(paths.tickets);
+    } else {
+      console.log("Unknown error creating ticket");
+    }
+
+    setIsLoading(false);
   };
 
   return (
