@@ -20,7 +20,7 @@ export async function generateMetadata({ params }) {
 async function getTicket(id) {
   const supabase = createServerComponentClient({ cookies });
   const { data, error } = await supabase
-    .from("Tickets")
+    .from("tickets")
     .select()
     .eq("id", id)
     .single();

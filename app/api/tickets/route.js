@@ -22,7 +22,7 @@ export async function POST(request) {
     if (!session) return NextResponse.redirect(paths.login);
 
     const { data, error } = await supabase
-      .from("Tickets")
+      .from("tickets")
       .insert({
         ...ticket,
         user_email: session.user.email,

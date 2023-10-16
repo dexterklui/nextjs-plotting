@@ -4,7 +4,7 @@ import Link from "next/link";
 
 async function getTickets() {
   const supabase = createServerComponentClient({ cookies });
-  const { data, error } = await supabase.from("Tickets").select();
+  const { data, error } = await supabase.from("tickets").select();
 
   if (error) {
     console.log(error.message);
