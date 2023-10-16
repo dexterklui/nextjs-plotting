@@ -19,7 +19,6 @@ export default async function DashboardLayout({ children }) {
       <Navbar title="Dojo Helpdesk" user={user}>
         <Link href={paths.dashboard}>Dashboard</Link>
         <Link href={paths.tickets}>Tickets</Link>
-        <Link href={paths.createTicket}>Create tickets</Link>
         <Link href={paths.playground}>Playground</Link>
       </Navbar>
       {children}
