@@ -8,6 +8,8 @@ const paths = {
   signup: "/signup",
   verify: "/verify",
 
+  apiTickets: "/api/tickets",
+
   playground: "/playground",
 
   recharts: "/playground/recharts",

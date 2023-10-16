@@ -2,9 +2,11 @@ import { cookies } from "next/headers";
 import { notFound } from "next/navigation";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 
+import DeleteButton from "./DeleteButton";
+
 // whether dyanmic params that do not match any generated static params should be accepted
 // if false then 404 page is served
-// default is true
+// default is true (the following setting is just making it explicit)
 export const dynamicParams = true;
 
 export async function generateMetadata({ params }) {
@@ -29,14 +31,23 @@ async function getTicket(id) {
 }
 
 export default async function TicketDetails({ params }) {
-  const { data: ticket, error } = await getTicket(params.id);
+  const id = params.id;
+  const { data: ticket, error } = await getTicket(id);
 
   if (error) notFound();
+
+  const supabase = createServerComponentClient({ cookies });
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
 
   return (
     <main>
       <nav>
         <h2>Ticket Details</h2>
+        <div className="ml-auto">
+          {session.user.email === ticket.user_email && <DeleteButton id={id} />}
+        </div>
       </nav>
       <div className="card">
         <h3>{ticket.title}</h3>
