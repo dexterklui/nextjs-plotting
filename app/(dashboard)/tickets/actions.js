@@ -31,3 +31,16 @@ export async function addTicket(formData) {
     redirect(paths.tickets);
   }
 }
+
+export async function deleteTicket(id) {
+  const supabase = createServerActionClient({ cookies });
+
+  const { error } = await supabase.from("tickets").delete().eq("id", id);
+
+  if (error) {
+    throw new Error("Could not delete the ticket.");
+  } else {
+    revalidatePath(paths.tickets);
+    redirect(paths.tickets);
+  }
+}
