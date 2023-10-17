@@ -25,7 +25,7 @@ export async function addTicket(formData) {
   });
 
   if (error) {
-    console.log(error.message);
+    throw new Error("Could not add the new ticket.");
   } else {
     revalidatePath(paths.tickets);
     redirect(paths.tickets);
